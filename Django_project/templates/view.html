@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>View Details</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    </head>
+    <body>
+        {% block content %}
+        <div class="container">
+            <div class="col-md-5">
+                <table class="table table-hover">
+                    <h1 class="page-header text-primary text-center">View Details</h1>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Address</th>
+                            <th>Contact</th>
+                            <th>Mail</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in datas %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{data.Name}}</td>
+                            <td>{{data.Age}}</td>
+                            <td>{{data.Address}}</td>
+                            <td>{{data.Contact}}</td>
+                            <td>{{data.Mail}}</td>
+                            <td><a class="btn btn-success" href="/update/{{data.id}}">Update</a></td>
+                            <td><a class="btn btn-danger" href="/delete/{{data.id}}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        {% endblock %}
+    </body>
+</html>
